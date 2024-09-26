@@ -1,0 +1,30 @@
+version: '3.7'
+networks:
+  my_network:
+    driver: bridge
+services:
+  database:
+    postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - postgres
+  # app:
+  #   build:
+  #     dockerfile: ./Dockerfile
+  #   networks:
+  #     - my_network
+  #   container_name: app
+  #   restart: always
+  #   depends_on:
+  #     - database
+  #   ports:
+  #     - 3000:3000
