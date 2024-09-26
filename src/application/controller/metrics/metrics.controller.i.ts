@@ -2,11 +2,7 @@ import { IsDateString, IsEnum, IsNumber, IsOptional, IsString } from 'class-vali
 import { ApiProperty } from '@nestjs/swagger';
 
 export const DistanceUnit = ['meter', 'centimeter', 'inch', 'feet', 'yard'];
-export type DistanceUnitType = typeof DistanceUnit[number]; 
-
 export const TemperatureUnit = ['C', 'F', 'K'];
-export type TemperatureUnitType = typeof DistanceUnit[number]; 
-
 export const TypeMetric = ['distance', 'temperature'];
 
 class DistanceDto {
