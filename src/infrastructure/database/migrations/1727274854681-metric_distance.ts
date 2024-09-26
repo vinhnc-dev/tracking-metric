@@ -21,7 +21,9 @@ export class metricDistance1727274854681 implements MigrationInterface {
         phone_number TEXT NULL,
         created_at TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP
         );
-      `);
+      INSERT INTO public.users ("name",phone_number,created_at) VALUES
+      ('vinh','123','2024-09-26 01:21:39.551');
+    `);
 
     await queryRunner.query(`
       DROP TABLE IF EXISTS metric_distances CASCADE;
@@ -49,6 +51,11 @@ export class metricDistance1727274854681 implements MigrationInterface {
 
       CREATE TABLE metric_distances_202412 PARTITION OF metric_distances
       FOR VALUES FROM ('2024-12-01') TO ('2025-01-01');
+
+      INSERT INTO public.metric_distances (user_id,value,unit,"date",created_at) VALUES
+      (1,123,'meter','2024-10-01','2024-09-25 18:21:45.748'),
+      (1,123,'meter','2024-10-01','2024-09-25 18:29:02.660'),
+      (1,123,'meter','2024-10-01','2024-09-26 12:35:24.550');
     `);
 
     await queryRunner.query(`
@@ -77,6 +84,12 @@ export class metricDistance1727274854681 implements MigrationInterface {
 
       CREATE TABLE metric_temperatures_202412 PARTITION OF metric_temperatures
       FOR VALUES FROM ('2024-12-01') TO ('2025-01-01');
+
+      INSERT INTO public.metric_temperatures (user_id,value,unit,"date",created_at) VALUES
+      (1,30,'C','2024-10-01','2024-09-25 18:21:45.775'),
+      (1,30,'C','2024-10-01','2024-09-25 18:29:02.692'),
+      (1,30,'C','2024-10-01','2024-09-26 12:35:24.696');
+
     `);
   }
 
